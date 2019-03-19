@@ -1,0 +1,1 @@
+This repository holds the code for a Shiny app to create a graph of the similiraties between a given name and all other names in the **babynames** package. The app can be found on [shinyapps.io](https://adfi.shinyapps.io/name_similarity). More information about the background of name similarity graphs see this [blogpost](https://adfi.gitlab.io).
