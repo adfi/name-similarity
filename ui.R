@@ -1,7 +1,7 @@
 library(shiny)
 
 shinyUI(fluidPage(
-  
+  shinyjs::useShinyjs(),
   # Application title
   titlePanel("That's not my name!"),
   
@@ -26,7 +26,10 @@ shinyUI(fluidPage(
     # Show a plot of the generated distribution
     mainPanel(
        plotOutput("simPlot"),
-       uiOutput("tweetButton")
+       actionButton(inputId="twitter_share",
+                    label = "Share",
+                    icon = icon("twitter"),
+                    style="background-color: #55acee;") 
     )
   )
 ))

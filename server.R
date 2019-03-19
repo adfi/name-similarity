@@ -32,14 +32,14 @@ shinyServer(function(input, output) {
     myPlot()
   })
   
-  output$tweetButton <- renderUI({
-    
-    actionButton("twitter_share",
-                 label = "Share",
-                 icon = icon("twitter"),
-                 onclick = sprintf("window.open('%s')", "https://twitter.com/intent/tweet?text=Hello%20world"),
-                 style="background-color: #55acee;") 
-    
+  observeEvent(input$twitter_share, {
+    p <- myPlot()
+    ggsave("name_similarity.png", p)
+    # upload to imgur
+    img_url <- knitr::imgur_upload("name_similarity.png")
+    # get link, form url
+    #sprintf()
+    shinyjs::runjs("window.open('https://twitter.com/intent/tweet?text=Hello%20world')")
   })
   
 })
