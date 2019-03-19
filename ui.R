@@ -19,17 +19,19 @@ shinyUI(fluidPage(
                    max = 1,
                    value = 0.6),
        HTML("For more information on how the graph is created see 
-            this <a href=''>blogpost</a>.")
+            this <a href=''>blogpost</a>."),
+      br(),
+      br(),
+      actionButton(inputId="twitter_share",
+                   label = "Share",
+                   icon = icon("twitter"),
+                   style="background-color: #55acee;")
        
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
-       plotOutput("simPlot"),
-       actionButton(inputId="twitter_share",
-                    label = "Share",
-                    icon = icon("twitter"),
-                    style="background-color: #55acee;") 
+       plotOutput("simPlot")
     )
   )
 ))
