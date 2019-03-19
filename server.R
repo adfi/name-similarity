@@ -34,12 +34,18 @@ shinyServer(function(input, output) {
   
   observeEvent(input$twitter_share, {
     p <- myPlot()
-    ggsave("name_similarity.png", p)
+    ggsave("name_similarity.png", p, width=4, height=4)
+    
     # upload to imgur
     img_url <- knitr::imgur_upload("name_similarity.png")
-    # get link, form url
-    #sprintf()
-    shinyjs::runjs("window.open('https://twitter.com/intent/tweet?text=Hello%20world')")
+    unlink("name_similarity.png")
+    
+    # compose tweet
+    text = "These are the names that are most similar to my own, created using R and the babynames package"
+    tweet = sprintf("window.open('https://twitter.com/intent/tweet?text=%s&url=%s&hashtags=rstats')",  
+                    text, img_url)
+    
+    shinyjs::runjs(tweet)
   })
   
 })
