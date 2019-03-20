@@ -1,9 +1,14 @@
 library(shiny)
+library(shinyjs)
 library(dplyr)
 library(tidygraph)
 library(ggraph)
 library(stringdist)
 library(babynames)
+library(knitr)
+# needed to upload image:
+library(httr)
+library(xml2)
 
 all_names <- babynames %>% 
   select(name) %>%
